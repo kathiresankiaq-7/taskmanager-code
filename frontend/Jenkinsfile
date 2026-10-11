@@ -25,10 +25,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                withCredentials([file(credentialsId: 'kiaq-aws-cred', variable: 'ENV_PROD')]) {
+            
                     dir('frontend') {
                         sh '''
-                        cp $ENV_PROD .env.production
+                
                         npm run build
                         '''
                     }
