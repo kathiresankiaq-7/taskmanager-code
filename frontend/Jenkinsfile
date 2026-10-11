@@ -26,12 +26,8 @@ pipeline {
         stage('Build') {
             steps {
             
-                    dir('frontend') {
-                        sh '''
+                   sh ''npm run build''
                 
-                        npm run build
-                        '''
-                    }
                 }
             }
         }
