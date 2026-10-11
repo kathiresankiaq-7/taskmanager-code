@@ -25,7 +25,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                withCredentials([file(credentialsId: 'tm-env-prod', variable: 'ENV_PROD')]) {
+                withCredentials([file(credentialsId: 'kiaq-aws-cred', variable: 'ENV_PROD')]) {
                     dir('frontend') {
                         sh '''
                         cp $ENV_PROD .env.production
