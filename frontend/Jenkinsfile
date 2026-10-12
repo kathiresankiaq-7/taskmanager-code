@@ -35,7 +35,7 @@ pipeline {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'kiaq-aws-cred']]) {
                     sh """
-                    aws s3 sync frontend/build/ s3://${S3_BUCKET} --delete
+                    aws s3 sync frontend/ s3://${S3_BUCKET} --delete
                     """
                 }
             }
