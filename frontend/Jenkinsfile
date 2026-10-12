@@ -25,9 +25,8 @@ pipeline {
 
         stage('Build') {
             steps {
-            
-                   sh ''npm run build''
-                
+                dir('frontend') {
+                    sh 'npm run build'
                 }
             }
         }
@@ -44,7 +43,7 @@ pipeline {
 
         stage('Invalidate CloudFront Cache') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'kiaq-aws-cred']]) {
                     sh """
                     /usr/local/bin/aws cloudfront create-invalidation \
                     --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} \
